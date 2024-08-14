@@ -13,7 +13,7 @@ function App() {
             method: 'GET',
             url: `https://open-weather13.p.rapidapi.com/city/${searchLocation}/en`,
             headers: {
-                'x-rapidapi-key': 'db2399ad0bmsha9dc1a05efba041p11ef0cjsn9c3a0ae9f1d1',
+                'x-rapidapi-key': process.env.REACT_APP_API_KEY,
                 'x-rapidapi-host': 'open-weather13.p.rapidapi.com'
             }
         };

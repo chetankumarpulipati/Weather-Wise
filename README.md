@@ -44,6 +44,8 @@ WeatherWise is a React application that allows users to search for weather infor
 - `src/components/WeatherDisplay.js`: Component for displaying weather information
 - `src/App.css`: CSS styles for the application
 
+## Website Screenshots
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
