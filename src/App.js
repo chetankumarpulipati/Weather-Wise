@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import axios from 'axios';
+import WeatherSearch from './components/WeatherSearch';
+import WeatherDisplay from './components/WeatherDisplay';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState(null);
+
+    const fetchWeather = async (searchLocation) => {
+        const options = {
+            method: 'GET',
+            url: `https://open-weather13.p.rapidapi.com/city/${searchLocation}/en`,
+            headers: {
+                'x-rapidapi-key': 'db2399ad0bmsha9dc1a05efba041p11ef0cjsn9c3a0ae9f1d1',
+                'x-rapidapi-host': 'open-weather13.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await axios.request(options);
+            setWeatherData(response.data);
+            setError(null); // Clear any previous errors
+        } catch (err) {
+            if (err.response && err.response.status === 404) {
+                setError(`Invalid city name: ${searchLocation}. Please try again.`);
+            } else {
+                setError('City not found or API error. Please try again.');
+            }
+            setWeatherData(null);
+            console.error(err);
+        }
+    };
+
+    return (
+        <div className="app-container">
+            <h1>WeatherWise</h1>
+            <WeatherSearch onSearch={fetchWeather} />
+            {error && <div className="error-message">{error}</div>}
+            {weatherData && <WeatherDisplay data={weatherData} />}
+        </div>
+
+    );
 }
 
 export default App;
