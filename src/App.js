@@ -8,7 +8,14 @@ function App() {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
 
+    const weatherDataHashTable = {};
+    const weatherDataarr = [];
     const fetchWeather = async (searchLocation) => {
+        if (weatherDataHashTable[searchLocation]) {
+            setWeatherData(weatherDataHashTable[searchLocation]);
+            setError(null);
+            return;
+        }
         const options = {
             method: 'GET',
             url: `https://open-weather13.p.rapidapi.com/city/${searchLocation}/en`,
@@ -20,6 +27,9 @@ function App() {
 
         try {
             const response = await axios.request(options);
+            weatherDataHashTable[searchLocation] = response.data;    // Hash Table implementation
+            weatherDataarr.push(response.data);     // array implementation
+            // console.log(weatherDataHashTable);
             setWeatherData(response.data);
             setError(null); // Clear any previous errors
         } catch (err) {
