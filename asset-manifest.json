@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Weather-Wise/static/css/main.0aae556a.css",
-    "main.js": "/Weather-Wise/static/js/main.a47090ea.js",
+    "main.js": "/Weather-Wise/static/js/main.6c9c8d88.js",
     "static/js/453.094a0066.chunk.js": "/Weather-Wise/static/js/453.094a0066.chunk.js",
     "index.html": "/Weather-Wise/index.html",
     "main.0aae556a.css.map": "/Weather-Wise/static/css/main.0aae556a.css.map",
-    "main.a47090ea.js.map": "/Weather-Wise/static/js/main.a47090ea.js.map",
+    "main.6c9c8d88.js.map": "/Weather-Wise/static/js/main.6c9c8d88.js.map",
     "453.094a0066.chunk.js.map": "/Weather-Wise/static/js/453.094a0066.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0aae556a.css",
-    "static/js/main.a47090ea.js"
+    "static/js/main.6c9c8d88.js"
   ]
 }
